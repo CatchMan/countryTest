@@ -26,7 +26,7 @@ class MainPresenter<V : MainContract.View> @Inject constructor(val getCountriesU
             }
 
             override fun onError(e: Throwable) {
-                "Cant update Content".loge(e)
+                retrieveCountries()
             }
         }, GetCountriesUseCase.Params())
     }
@@ -38,7 +38,7 @@ class MainPresenter<V : MainContract.View> @Inject constructor(val getCountriesU
             }
 
             override fun onError(e: Throwable) {
-                "Cant load qr code from Storage".loge(e)
+                view?.showProgress(false)
             }
         }, LoadCountriesUseCase.Params())
 

@@ -17,12 +17,13 @@ class DescriptionPresenter<V : DescriptionContract.View> @Inject constructor(val
 
 
 
-    override fun retrieveCountries(list: String) {
+    override fun retrieveCountries(lst: String) {
         loadCountriesUseCase.execute(object : DisposableSingleObserver<List<CountryInfo>>() {
             override fun onSuccess(countries: List<CountryInfo>) {
                 var list = ArrayList<String>()
                 countries.forEach {
-                    if(list.contains(it.alpha3Code)){
+                    Log.e("!!!",  lst  + " - " + it.alpha3Code)
+                    if(lst.contains(it.alpha3Code)){
                         list.add(it.nativeName)
                     }
                 }
